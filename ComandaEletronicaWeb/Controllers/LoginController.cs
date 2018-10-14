@@ -31,8 +31,7 @@ namespace ComandaEletronicaWeb.Controllers
                     HttpCookie ck = new HttpCookie("token");
                     ck.Values.Add("userId", usuario.Id.ToString());
                     var nomes = usuario.Nome.Split(' ');
-                    string nome = "Oi, " + nomes[0];
-                    ck.Values.Add("Nome", nome);
+                    ck.Values.Add("Nome", "Oi, " + nomes[0]);
                     ck.Expires = DateTime.Now.AddDays(10);
                     Response.Cookies.Add(ck);
 
