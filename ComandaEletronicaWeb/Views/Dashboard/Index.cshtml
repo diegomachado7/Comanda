@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+@section scripts
+{
+    <script src="~/Scripts/Views/Dashboard/Index.js"></script>
+    <script src="~/Scripts/Views/Util.js" ~></script>
+}
+
+<h2>Produtos</h2>
+<form>
+    <div class="row">
+        <div class="col-sm-9">
+            <input type="text" name="txtPalavraChaveProduto" id="txtPalavraChaveProduto" value=""
+                   class="form-control" placeholder="Procurar..." />
+        </div>
+        <div class="col-sm-1">
+            <button type="button" id="btnPesquisarProduto" class="btn btn-primary">Pesquisar</button>
+        </div>
+        <div class="col-sm-2">
+            <a role="button" class="btn btn-success"
+               data-fancybox data-src="#formProduto"
+               onclick="javascript: LimparFormulario(); $.fancybox.close();">
+                Novo Produto
+            </a>
+        </div>
+        <div class="form-group">
+            <span class="text-danger" id="msg"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <table id="tabelaProduto" class="table table-striped table-responsive table-condensed table-hover"></table>
+    </div>
+</form>
+
+@*Fancybox FORM PRODUTO*@
+<div style="display: none; min-width: 300px; width: 800px" id="formProduto">
+    <h3>Dados do Produto</h3>
+    <form name="formProduto" id="formProduto" action="/Produto/Gravar" method="post">
+        <input type="hidden" name="txtProdutoId" id="txtProdutoId" value="0" />
+        <div class="form-group">
+            <label for="txtNome">Nome:</label>
+            <input type="text" required name="txtNome" id="txtNome" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="txtDescricao">Descrição:</label>
+            <input type="text" required name="txtDescricao" id="txtDescricao" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="txtValor">Valor:</label>
+            <input type="text" required name="txtValor" id="txtValor" class="form-control" />
+        </div>
+        <div id="divAlertaNovoProduto" class="alert alert-danger" role="alert" style="display:none"></div>
+        <div class="form-inline">
+            <button type="button" name="btnConfirmarProduto" id="btnConfirmarProduto" class="btn btn-success">Confirmar</button>
+            <button type="button" name="btnCancelarProduto" id="btnCancelarProduto" class="btn btn-danger"
+                    onclick="javascript: LimparFormulario(); $.fancybox.close();">
+                Cancelar
+            </button>
+        </div>
+    </form>
+</div>
+
+<h2>Pulseiras</h2>
+<form>
+    <div class="row">
+        <div class="col-sm-9">
+            <input type="text" name="txtPalavraChavePulseira" id="txtPalavraChavePulseira" value="" class="form-control" placeholder="Procurar..." />
+        </div>
+        <div class="col-sm-1">
+            <button type="button" id="btnPesquisarPulseira" class="btn btn-primary">Pesquisar</button>
+        </div>
+        <div class="col-sm-2">
+            <a role="button" class="btn btn-success"
+               data-fancybox data-src="#formPulseira"
+               onclick="javascript: LimparFormulario(); $.fancybox.close();">
+                Nova Pulseira
+            </a>
+        </div>
+        <div class="form-group">
+            <span class="text-danger" id="msg2"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <table id="tabelaPulseira" class="table table-striped table-responsive table-condensed table-hover"></table>
+    </div>
+</form>
+
+@*Fancybox FORM PULSEIRA*@
+<div style="display: none; min-width: 300px; width: 800px" id="formPulseira">
+    <h3>Cadastro Pulseira</h3>
+    <form name="formPulseira" id="formPulseira" action="/Pulseira/Gravar" method="post">
+        <input type="hidden" name="txtPulseiraId" id="txtPulseiraId" value="0" />
+        <div id="divAlertaNovoPulseira" class="alert alert-danger" role="alert" style="display:none"></div>
+        <div class="form-inline">
+            <button type="button" name="btnCadastrarPulseira" id="btnCadastrarPulseira" class="btn btn-success">Cadastrar</button>
+            <button type="button" name="btnCancelarPulseira" id="btnCancelarPulseria" class="btn btn-danger"
+                    onclick="javascript: LimparFormulario(); $.fancybox.close();">
+                Cancelar
+            </button>
+        </div>
+    </form>
+</div>

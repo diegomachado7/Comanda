@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Comanda Eletrônica</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/ie10-viewport-bug-workaround.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/ie-emulation-modes-warning.js"></script>
+    <link href="~/Content/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <img src="~/Content/Imagens/logo.png" width="48" height="48" />
+                @Html.ActionLink("Comanda Eletrônica", "Index", "Dashboard", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            @{
+                HttpCookie ck = Request.Cookies["token"];
+                if (ck != null && int.Parse(ck.Values["userId"].ToString()) > 0)
+                {
+                    <div class="navbar-collapse collapse">
+
+                        <ul id="navbar2" class="nav navbar-nav navbar-right">
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+                                    <span class="glyphicon glyphicon-user"></span> @ck.Values["Nome"].ToString()<span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/Login/Sair">Sair</a></li>
+                                </ul>
+                            </div>
+                        </ul>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Comanda Eletrônica</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/ie10-viewport-bug-workaround.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.fancybox.min.js"></script>
+    <script src="~/Scripts/bootbox.min.js"></script>
+
+    @RenderSection("scripts", false)
+    @RenderSection("estilos", false)
+</body>
+</html>
